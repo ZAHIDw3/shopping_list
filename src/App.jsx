@@ -1,4 +1,30 @@
+import { useState } from "react"
+
 function App() {
+  const [itemChecked, setItemChecked] = useState({
+    first: false,
+    second: false,
+    third: false,
+  })
+
+  const handleItemChecked = (e) => {
+    /*if (itemChecked[e.target.name]) {
+      setItemChecked({
+        ...itemChecked,
+        [e.target.name]: false,
+      });
+    } else {
+      setItemChecked({
+        ...itemChecked,
+        [e.target.name]: true,
+      });
+    }*/
+    setItemChecked({
+      ...itemChecked,
+      [e.target.name]: !itemChecked[e.target.name],
+    })
+  }
+
   return (
     <div className="container text-center">
       <div className="row">
@@ -12,13 +38,17 @@ function App() {
           </button>
         </div>
       </div>
-      
+
       <div className="row">
         <div className="col">
-          <input type="checkbox" />
+          <input onClick={(e) => handleItemChecked(e)} name="first" checked={itemChecked.first} type="checkbox" />
         </div>
-        <div className="col-2 text-start">1 kg</div>
-        <div className="col-5 col-md-6 text-start">Tortillas</div>
+        <div className="col-2 text-start">
+          {/*itemChecked.first && <del>1 kg</del>*/}
+          {/*!itemChecked.first && "1 kg"*/}
+          {itemChecked.first ? <del>1 kg</del> : "1 kg"}
+        </div>
+        <div className="col-5 col-md-6 text-start" style={{ textDecoration: itemChecked.first && "line-through" }}>Tortillas</div>
         <div className="col-4 col-md-3 btn-group btn-group-sm" role="group">
           <button type="button" class="btn btn-outline-primary">
             <i class="bi bi-pencil-square"></i>
@@ -31,7 +61,7 @@ function App() {
           </button>
         </div>
       </div>
-      
+
       <div className="row">
         <div className="col">
           <input type="checkbox" />
