@@ -1,26 +1,34 @@
 import { useState } from "react"
+import ListItem from "./components/ListItem";
 
 function App() {
   const [listItems, setListItems] = useState([
     {
-      id: "",
-      name: "",
-      quantity: 0,
-      unit: "",
+      id: "1",
+      name: "Arroz",
+      quantity: 1,
+      unit: "kg",
       checked: false,
     },
     {
-      id: "",
-      name: "",
-      quantity: 0,
-      unit: "",
+      id: "2",
+      name: "Frijol",
+      quantity: 1,
+      unit: "kg",
       checked: false,
     },
     {
-      id: "",
-      name: "",
-      quantity: 0,
-      unit: "",
+      id: "3",
+      name: " Leche",
+      quantity: 2,
+      unit: "lts",
+      checked: false,
+    },
+    {
+      id: "4",
+      name: " Papel higenico",
+      quantity: 1,
+      unit: "pz",
       checked: false,
     },
   ])
@@ -48,75 +56,19 @@ function App() {
         </div>
       </div>
       <hr />
-
-      <div className="row">
-        <div className="col">
-          <input onClick={(e) => handleItemChecked(e)} name={listItems[0].id} checked={listItems[0].checked} type="checkbox" />
-        </div>
-        <div className="col-2 text-start">
-          {/*listItems.first && <del>1 kg</del>*/}
-          {/*!listItems.first && "1 kg"*/}
-          {listItems[0].checked ? <del>{`${listItems[0].quantity} ${listItems[0].unit}`}</del> : `${listItems[0].quantity} ${listItems[0].unit}`}
-        </div>
-        <div className="col-5 col-md-6 text-start" style={{ textDecoration: listItems[0].checked && "line-through" }}>{listItems[0].name}</div>
-        <div className="col-4 col-md-3 btn-group btn-group-sm" role="group">
-          <button type="button" class="btn btn-outline-primary">
-            <i class="bi bi-pencil-square"></i>
-          </button>
-          <button type="button" class="btn btn-outline-primary">
-            <i class="bi bi-files"></i>
-          </button>
-          <button type="button" class="btn btn-outline-danger">
-            <i class="bi bi-trash2-fill"></i>
-          </button>
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col">
-          <input onClick={(e) => handleItemChecked(e)} name={listItems[0].id} checked={listItems[0].checked} type="checkbox" />
-        </div>
-        <div className="col-2 text-start">
-          {/*listItems.first && <del>1 kg</del>*/}
-          {/*!listItems.first && "1 kg"*/}
-          {listItems[0].checked ? <del>{`${listItems[0].quantity} ${listItems[0].unit}`}</del> : `${listItems[0].quantity} ${listItems[0].unit}`}
-        </div>
-        <div className="col-5 col-md-6 text-start" style={{ textDecoration: listItems[0].checked && "line-through" }}>{listItems[0].name}</div>
-        <div className="col-4 col-md-3 btn-group btn-group-sm" role="group">
-          <button type="button" class="btn btn-outline-primary">
-            <i class="bi bi-pencil-square"></i>
-          </button>
-          <button type="button" class="btn btn-outline-primary">
-            <i class="bi bi-files"></i>
-          </button>
-          <button type="button" class="btn btn-outline-danger">
-            <i class="bi bi-trash2-fill"></i>
-          </button>
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col">
-          <input onClick={(e) => handleItemChecked(e)} name={listItems[0].id} checked={listItems[0].checked} type="checkbox" />
-        </div>
-        <div className="col-2 text-start">
-          {/*listItems.first && <del>1 kg</del>*/}
-          {/*!listItems.first && "1 kg"*/}
-          {listItems[0].checked ? <del>{`${listItems[0].quantity} ${listItems[0].unit}`}</del> : `${listItems[0].quantity} ${listItems[0].unit}`}
-        </div>
-        <div className="col-5 col-md-6 text-start" style={{ textDecoration: listItems[0].checked && "line-through" }}>{listItems[0].name}</div>
-        <div className="col-4 col-md-3 btn-group btn-group-sm" role="group">
-          <button type="button" class="btn btn-outline-primary">
-            <i class="bi bi-pencil-square"></i>
-          </button>
-          <button type="button" class="btn btn-outline-primary">
-            <i class="bi bi-files"></i>
-          </button>
-          <button type="button" class="btn btn-outline-danger">
-            <i class="bi bi-trash2-fill"></i>
-          </button>
-        </div>
-      </div>
+      {
+        listItems.map((item) => (
+          <ListItem
+            id={item.id}
+            name={item.name}
+            quantity={item.quantity}
+            unit={item.unit}
+            checked={item.checked}
+            handleItemChecked={handleItemChecked}
+          />
+        ))
+      }
+      <hr />
 
     </div>
   )
