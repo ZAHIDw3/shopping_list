@@ -51,7 +51,7 @@ function App() {
           <h1>Shopping List</h1>
         </div>
         <div className="col text-end mt-1">
-          <NewItemButton />
+          <NewItemButton listItems= {listItems} setListItems={setListItems} />
         </div>
       </div>
       <hr />
