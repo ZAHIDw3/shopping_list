@@ -36,15 +36,19 @@ const NewItemButton = ({listItems, setListItems}) => {
                 const quantity = Swal.getPopup().querySelector("#quantity").value;
                 const unit = Swal.getPopup().querySelector("#unit").value;
                 if (!name || !quantity || !unit) {
-                    Swal.showValidationMessage("Prease enter name");
+                    Swal.showValidationMessage("Please enter full information");
                 }
                 return { name, quantity, unit };
             },
         })
+        
+        if(!value.name || !value.quantity || !value.unit) return;
+
         setListItems([
             ...listItems,
             {
-                id: listItems.length+1,
+                //id: (listItems.length+1).toString(),
+                id: `${listItems.length+1}`,
                 ...value,
                 checked: false,
             }

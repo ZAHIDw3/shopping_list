@@ -1,4 +1,5 @@
 import { useState } from "react"
+import ClearListButton from "./components/ClearListButton";
 import ListItem from "./components/ListItem";
 import NewItemButton from "./components/NewItemButton";
 
@@ -51,6 +52,7 @@ function App() {
           <h1>Shopping List</h1>
         </div>
         <div className="col text-end mt-1">
+          <ClearListButton setListItems={setListItems} />
           <NewItemButton listItems= {listItems} setListItems={setListItems} />
         </div>
       </div>
@@ -71,6 +73,7 @@ function App() {
       <hr />
 
       <div className="col text-end">
+        <ClearListButton setListItems={setListItems} />
         <NewItemButton />
       </div>
 
